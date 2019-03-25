@@ -6,6 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CattleCallAPI.Controllers
 {
+    public class Unloader
+    {
+        String Name { get; set; }
+        String Phone { get; set; }
+
+        public Unloader(string name, string phone)
+        {
+            Name = name;
+            Phone = phone;
+        }
+
+        
+    }
+
+    Unloader steve = new Unloader("steve", "6202761234")
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -14,24 +31,30 @@ namespace CattleCallAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "Value" };
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            return $"value {id}";
+        }
+
+        [HttpGet("{name}")]
+        public ActionResult<IEnumerable<string>> Get(string name)
+        {
+            return
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Unloader unloader)
         {
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
+        [HttpPut("id")]
         public void Put(int id, [FromBody] string value)
         {
         }
@@ -42,4 +65,6 @@ namespace CattleCallAPI.Controllers
         {
         }
     }
+
+    
 }
